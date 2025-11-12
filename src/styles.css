@@ -1,0 +1,170 @@
+:root {
+    --bg: rgb(146, 142, 133);
+    --card: #fff;
+    --accent: #4f46e5;
+    --muted: #666;
+}
+
+body {
+    font-family: Inter, system-ui, sans-serif;
+    background: var(--bg);
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-family: fantasy;
+    color: rgb(8, 8, 8);
+}
+
+/* --- Contenedor principal --- */
+.app {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+/* --- Tarjeta del testimonio --- */
+.testimonial-card {
+    background: var(--card);
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(20, 20, 50, 0.08);
+}
+
+.testimonial-photo {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+}
+
+.testimonial-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+    color: rgb(0, 0, 0);
+}
+
+.testimonial-role {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 6px 0 12px;
+}
+
+.testimonial-text {
+    font-style: italic;
+    line-height: 1.5;
+    color: #222;
+}
+
+/* --- Controles --- */
+.controls {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.controls button {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    background: #464646;
+    color: white;
+    font-size: 1rem;
+    transition: background 0.3s;
+}
+
+.controls button:hover {
+    background: var(--accent);
+}
+
+/* --- Contador --- */
+.counter {
+    color: var(--muted);
+    margin-top: 8px;
+    font-size: 0.9rem;
+}
+
+/* Teléfonos  */
+@media (max-width: 480px) {
+    body {
+        padding: 20px;
+    }
+
+    .app {
+        max-width: 100%;
+    }
+
+    .testimonial-card {
+        padding: 16px;
+    }
+
+    .testimonial-photo {
+        width: 70px;
+        height: 70px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .controls button {
+        padding: 6px 10px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets */
+@media (min-width: 481px) and (max-width: 768px) {
+    .app {
+        max-width: 600px;
+    }
+
+    .testimonial-card {
+        padding: 28px;
+    }
+
+    .testimonial-photo {
+        width: 100px;
+        height: 100px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .controls button {
+        padding: 10px 16px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Pantallas grandes*/
+@media (min-width: 769px) {
+    .app {
+        max-width: 700px;
+    }
+
+    .testimonial-card {
+        padding: 32px;
+    }
+
+    .testimonial-photo {
+        width: 110px;
+        height: 110px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .controls button {
+        padding: 10px 18px;
+        font-size: 1.2rem;
+    }
+}

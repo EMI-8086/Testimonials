@@ -1,0 +1,55 @@
+import React, { useState, useEffect, useRef } from 'react';
+import testimonios from './data';
+import Testimonial from './components/Testimonial';
+import Controls from './components/Controls';
+import './styles.css';
+
+export default function App() {
+  const [index, setIndex] = useState(0);
+  const length = testimonios.length;
+  const autoplayRef = useRef(null);
+
+  const next = () => setIndex(prev => (prev + 1) % length);
+  const prev = () => setIndex(prev => (prev - 1 + length) % length);
+  const random = () => {
+    let r = Math.floor(Math.random() * length);
+    if (r === index) r = (r + 1) % length;
+    setIndex(r);
+  };
+
+  // Autoplay cada 5 segundos
+  useEffect(() => {
+    autoplayRef.current = setInterval(() => {
+      setIndex(i => (i + 1) % length);
+    }, 5000);
+
+    return () => clearInterval(autoplayRef.current);
+  }, [length]);
+
+  const handleUserAction = (actionFn) => {
+    if (typeof actionFn === 'function') {
+      clearInterval(autoplayRef.current);
+      actionFn(); // Ejecuta prev, next o random
+      autoplayRef.current = setInterval(() => {
+        setIndex(i => (i + 1) % length);
+      }, 5000);
+    }
+  };
+
+  return (
+    <main className="app">
+      <h1>Testimonios</h1>
+      <div className="card-wrapper">
+        <Testimonial item={testimonios[index]} />
+      </div>
+
+      <Controls
+        onPrev={() => handleUserAction(prev)}
+        onNext={() => handleUserAction(next)}
+        onRandom={() => handleUserAction(random)}
+      />
+
+      <p className="counter">{index + 1} / {length}</p>
+    </main>
+  );
+}
